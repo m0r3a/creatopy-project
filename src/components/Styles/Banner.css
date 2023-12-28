@@ -14,13 +14,13 @@
 
     border-radius: 15px;
     border: 2px solid rgb(236, 236, 236);
-
-    transition: background 1.5s ease-in-out;
+    transition: background 1.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .banner:hover {
     background: linear-gradient(to right, #247881, #43919B); 
     color: black;
+    transform: scale(1.1);
 }
 
 .banner:hover h1 {
