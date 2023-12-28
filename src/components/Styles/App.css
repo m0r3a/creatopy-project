@@ -47,12 +47,22 @@
     -webkit-animation: sliderShape 5s linear infinite;
   }
 
-  footer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 10vh;
-  }
+ /* Styles.css or your preferred style file */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
 
   @keyframes sliderShape{
     0%,100%{
