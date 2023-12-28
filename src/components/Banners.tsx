@@ -11,6 +11,9 @@ const Banners: React.FC = () => {
           <Banner name='Twitter Header' size='1500x500px' to='/twitter-header' />
           <Banner name='Instagram Story' size='1080x1920px' to='/instagram-story' />
         </div>
+        <footer>
+          &copy; 2024 Buret Danila
+        </footer>
       </div>
     );
   };
