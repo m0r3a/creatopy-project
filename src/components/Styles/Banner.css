@@ -19,7 +19,7 @@
 }
 
 .banner:hover {
-    background: linear-gradient(to right, #247881, #43919B); /* Adjust gradient colors as needed */
+    background: linear-gradient(to right, #247881, #43919B); 
     color: black;
 }
 

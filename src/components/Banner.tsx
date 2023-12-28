@@ -1,17 +1,22 @@
-import React, { FC } from 'react';
-import './Styles/Banner.css';
+// Banner.tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Styles/Banner.css'
 
 interface BannerProps {
   name: string;
   size: string;
+  to: string; 
 }
 
-const Banner: FC<BannerProps> = (props) => {
+const Banner: React.FC<BannerProps> = ({ name, size, to }) => {
   return (
-    <div className="banner">
-      <h1>{props.name}</h1>
-      <p>{props.size}</p>
-    </div>
+    <Link style={{textDecoration: 'none', color: 'white'}} to={to}>
+      <div className="banner">
+        <h1>{name}</h1>
+        <h2>{size}</h2>
+      </div>
+    </Link>
   );
 };
 
