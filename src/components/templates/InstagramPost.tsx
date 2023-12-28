@@ -1,11 +1,15 @@
-import React /*,{ useRef }*/ from 'react';
-// import domtoimage from 'dom-to-image';
+import React from 'react';
 import './Styles/InstagramPost.css';
+import Header from './Header';
+import AddContainer from './AddContainer';
 
 const InstagramPost: React.FC = () => {
   
   return (
-    <div className="">Instagram Post</div>
+    <div className="">
+      <Header />
+      <AddContainer heightProp={"500px"} widthProp={"500px"}/>
+    </div>
   );
 };
 

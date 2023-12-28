@@ -18,9 +18,11 @@
 }
 
 .banner:hover {
-    background: linear-gradient(to right, #247881, #43919B); 
+    background: linear-gradient(180deg,#00FFC6,#30AADD);
     color: black;
     transform: scale(1.1);
+
+    border: none;
 }
 
 .banner:hover h1 {
