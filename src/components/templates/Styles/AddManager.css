@@ -4,3 +4,8 @@
 
     border: 1px solid white;
 }
+
+.row {
+    border: 1px solid white;
+    height: 25%;
+}

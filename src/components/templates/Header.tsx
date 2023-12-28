@@ -1,11 +1,16 @@
 import React from 'react';
 import './Styles/Header.css';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  name: string
+}
+
+const Header: React.FC<HeaderProps> = ({name}) => {
   
   return (
     <div className="header">
-      AI Add Generator
+      AI Add Generator 
+      <div className='name'>{name}</div>
     </div>
   );
 };

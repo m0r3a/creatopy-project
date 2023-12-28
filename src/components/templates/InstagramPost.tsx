@@ -7,7 +7,7 @@ const InstagramPost: React.FC = () => {
   
   return (
     <div className="">
-      <Header />
+      <Header name="Instagram Post (500x500px)"/>
       <AddContainer heightProp={"500px"} widthProp={"500px"}/>
     </div>
   );
