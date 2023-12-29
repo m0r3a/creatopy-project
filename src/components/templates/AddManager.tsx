@@ -3,9 +3,10 @@ import openAi from 'openai';
 import './Styles/AddManager.css';
 
 const openai = new openAi({
-  apiKey: "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",
-  dangerouslyAllowBrowser: true
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
 });
+
 
 interface AddManagerProps {
     title: string;

@@ -5,9 +5,10 @@ import AddManager from './AddManager';
 import openAi from 'openai';
 
 const openai = new openAi({
-  apiKey: "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",
-  dangerouslyAllowBrowser: true
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
 });
+
 
 interface AddContainerProps {
   heightProp: string;
@@ -38,6 +39,7 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
 
       if (imageUrl) {
         console.log(imageUrl);
+        console.log(process.env.REACT_APP_OPENAI_API_KEY);
         setGeneratedImageUrl(imageUrl);
       } else {
         console.error('Error generating image: Unexpected response structure');
