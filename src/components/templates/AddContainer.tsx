@@ -32,7 +32,9 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
           <p>Description</p>
           <button id='CLA-btn'>CTAs asdasdasd as</button>
         </div>
-        <button onClick={handleDownloadClick} id='download-btn' className="glow-on-hover" >Download</button>
+        <button className="button-27" onClick={handleDownloadClick} role="button">
+          <span className="text">Download</span>
+        </button>
       </div>
       <AddManager />
     </div>

@@ -31,7 +31,9 @@ const AddManager: React.FC = () => {
           value={input1}
           onChange={(e) => setInput1(e.target.value)}
         />
-        <button onClick={handleGenerateClick}>Generate</button>
+        <button className="button-20" role="button">
+          <span className="text">Generate</span>
+        </button>
       </div>
       <div className="row second">
       <h4>Change the title</h4>
@@ -40,8 +42,14 @@ const AddManager: React.FC = () => {
           value={input2}
           onChange={(e) => setInput2(e.target.value)}
         />
-        <button onClick={handleRegenerateClick}>Regenerate</button>
-        <button onClick={handleApplyClick}>Apply</button>
+        <div className='btns'>
+          <button className="button-20" role="button">
+            <span className="text">Regenerate</span>
+          </button>
+          <button className="button-20" role="button">
+            <span className="text">Apply</span>
+          </button>
+        </div>
       </div>
       <div className="row third">
       <h4>Change the description</h4>
@@ -50,8 +58,14 @@ const AddManager: React.FC = () => {
           value={input3}
           onChange={(e) => setInput3(e.target.value)}
         />
-        <button onClick={handleRegenerateClick}>Regenerate</button>
-        <button onClick={handleApplyClick}>Apply</button>
+        <div className='btns'>
+          <button className="button-20" role="button">
+            <span className="text">Regenerate</span>
+          </button>
+          <button className="button-20" role="button">
+            <span className="text">Apply</span>
+          </button>
+        </div>
       </div>
       <div className="row fourth">
       <h4>Change the CLA button</h4>
@@ -60,8 +74,14 @@ const AddManager: React.FC = () => {
           value={input4}
           onChange={(e) => setInput4(e.target.value)}
         />
-        <button onClick={handleRegenerateClick}>Regenerate</button>
-        <button onClick={handleApplyClick}>Apply</button>
+        <div className='btns'>
+          <button className="button-20" role="button">
+            <span className="text">Regenerate</span>
+          </button>
+          <button className="button-20" role="button">
+            <span className="text">Apply</span>
+          </button>
+        </div>
       </div>
     </div>
   );
