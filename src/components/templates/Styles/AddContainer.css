@@ -22,18 +22,21 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    border: 1px solid white;
 }
 
-h2 {
+.image-container h2 {
     position: relative;
     top: 10%;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    text-align: center;
 }
 
-p {
+.image-container p {
     position: relative;
     top: -25%;
+    margin: 0 15px;
+    text-align: center;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
 .image-container button {
@@ -45,8 +48,8 @@ p {
     max-width:calc(100% - 100px);
     height: 50px;
 
-    border: 1px solid white;
     padding: 0 20px;
+    border: 1px solid white;
 
     color: white;
 }
