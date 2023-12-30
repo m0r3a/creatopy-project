@@ -5,7 +5,7 @@ import Banner from './Banner';
 const Banners: React.FC = () => {
     return (
       <div className="slider-thumb app">
-        <h1>Add AI Generation</h1>
+        <h1>Add AI Generator</h1>
         <div className='banners'>
           <Banner name='Instagram Post' size='500x500px' to='/instagram-post' />
           <Banner name='Twitter Header' size='1500x500px' to='/twitter-header' />
