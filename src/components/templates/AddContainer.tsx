@@ -71,10 +71,10 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
   
         // Set the window content to a div with the image and overlay text
         imageTab.document.body.innerHTML = `
-          <div style="position: relative; width: 500px; height: 500px; margin: 0 auto; text-align: center; overflow: hidden;">
+          <div style="position: relative; width: ${widthProp}; height: ${heightProp}; margin: 0 auto; text-align: center; overflow: hidden;">
             <img src="${imageUrlWithParams}" alt="Generated Image" style="width: 100%; height: 100%; object-fit: cover;"/>
-            <h2 style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); color: white; width: 100%; text-align: center; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">${title}</h2>
-            <p style="position: absolute; top: 18%; left: 50%; transform: translate(-50%, -50%); color: white; width: 100%; text-align: center; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">${description}</p>
+            <h2 style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); color: white; width: 100%; text-align: center; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">${title}</h2>
+            <p style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%); color: white; width: 100%; text-align: center; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">${description}</p>
             <button style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; background: transparent; min-width: 60px; max-width: calc(100% - 100px); height: 50px; padding: 0 20px; border: 1px solid white;">${cta}</button>
           </div>
         `;

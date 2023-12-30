@@ -33,7 +33,7 @@
 
 .image-container p {
     position: relative;
-    top: -25%;
+    top: -15%;
     margin: 0 15px;
     text-align: center;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
@@ -50,8 +50,10 @@
 
     padding: 0 20px;
     border: 1px solid white;
+    box-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 
     color: white;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
 

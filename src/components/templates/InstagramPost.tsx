@@ -1,5 +1,5 @@
 import React from 'react';
-import './Styles/InstagramPost.css';
+import './Styles/EditMenu.css';
 import Header from './Header';
 import AddContainer from './AddContainer';
 
