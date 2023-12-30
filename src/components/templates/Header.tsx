@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = ({name}) => {
   
   return (
     <div className="header">
-      AI Add Generator 
+      AI Ad Generator 
       <div className='name'>{name}</div>
     </div>
   );
