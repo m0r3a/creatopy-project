@@ -27,9 +27,7 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
     let generatedCta;
 
     try {
-      // Check if the prompt is not empty before making the API request
       if (input1.trim() !== '') {
-        // Construct the OpenAI request payload for text completion
         const responseText = await openai.chat.completions.create({
           model: "gpt-3.5-turbo",
           messages: [
@@ -41,7 +39,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
           top_p: 1,
         });
 
-        // Check if the necessary properties are present in the text response
         if (
           responseText &&
           responseText.choices &&
@@ -56,14 +53,11 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
         }
       }
     }catch (error) {
-      // Cast the error to the Error type and access the message property
       console.error('Error generating title:', (error as Error).message);
     }
 
     try {
-      // Check if the prompt is not empty before making the API request
       if (input1.trim() !== '') {
-        // Construct the OpenAI request payload for text completion
         const responseText = await openai.chat.completions.create({
           model: "gpt-3.5-turbo",
           messages: [
@@ -75,7 +69,7 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
           top_p: 1,
         });
 
-        // Check if the necessary properties are present in the text response
+
         if (
           responseText &&
           responseText.choices &&
@@ -90,14 +84,11 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
         }
       }
     }catch (error) {
-      // Cast the error to the Error type and access the message property
       console.error('Error generating description:', (error as Error).message);
     }
 
     try {
-      // Check if the prompt is not empty before making the API request
       if (input1.trim() !== '') {
-        // Construct the OpenAI request payload for text completion
         const responseText = await openai.chat.completions.create({
           model: "gpt-3.5-turbo",
           messages: [
@@ -109,7 +100,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
           top_p: 1,
         });
 
-        // Check if the necessary properties are present in the text response
         if (
           responseText &&
           responseText.choices &&
@@ -124,7 +114,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
         }
       }
     }catch (error) {
-      // Cast the error to the Error type and access the message property
       console.error('Error generating cta:', (error as Error).message);
     }
 
@@ -140,9 +129,7 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
     switch(field){
       case "title":
         try {
-          // Check if the prompt is not empty before making the API request
           if (input1.trim() !== '') {
-            // Construct the OpenAI request payload for text completion
             const responseText = await openai.chat.completions.create({
               model: "gpt-3.5-turbo",
               messages: [
@@ -154,7 +141,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
               top_p: 1,
             });
     
-            // Check if the necessary properties are present in the text response
             if (
               responseText &&
               responseText.choices &&
@@ -169,16 +155,13 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
             }
           }
         }catch (error) {
-          // Cast the error to the Error type and access the message property
           console.error('Error generating title:', (error as Error).message);
         }
       break;
 
       case "description":
         try {
-          // Check if the prompt is not empty before making the API request
           if (input1.trim() !== '') {
-            // Construct the OpenAI request payload for text completion
             const responseText = await openai.chat.completions.create({
               model: "gpt-3.5-turbo",
               messages: [
@@ -190,7 +173,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
               top_p: 1,
             });
     
-            // Check if the necessary properties are present in the text response
             if (
               responseText &&
               responseText.choices &&
@@ -205,16 +187,13 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
             }
           }
         }catch (error) {
-          // Cast the error to the Error type and access the message property
           console.error('Error generating description:', (error as Error).message);
         }
       break;
 
       case "cta":
         try {
-          // Check if the prompt is not empty before making the API request
           if (input1.trim() !== '') {
-            // Construct the OpenAI request payload for text completion
             const responseText = await openai.chat.completions.create({
               model: "gpt-3.5-turbo",
               messages: [
@@ -226,7 +205,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
               top_p: 1,
             });
     
-            // Check if the necessary properties are present in the text response
             if (
               responseText &&
               responseText.choices &&
@@ -241,7 +219,6 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
             }
           }
         }catch (error) {
-          // Cast the error to the Error type and access the message property
           console.error('Error generating cta:', (error as Error).message);
         }
       break;
