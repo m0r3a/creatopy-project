@@ -81,6 +81,18 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
       }
     }
   };
+
+  const handleApplyTittle = (newTitle: string) => {
+    setTitle(newTitle);
+  }
+
+  const handleApplyDesc = (newDesc: string) => {
+    setDescription(newDesc);
+  }
+
+  const handleApplyCta = (newCta: string) => {
+    setCta(newCta);
+  }
   
   return (
     <div className="add-container">
@@ -105,10 +117,10 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
         </button>
       </div>
       <AddManager
-        title={title}
-        description={description}
-        cta={cta}
         generateValues={handleChangeGeneration}
+        changeTitle={handleApplyTittle}
+        changeDesc={handleApplyDesc}
+        changeCta={handleApplyCta}
       />
     </div>
   );

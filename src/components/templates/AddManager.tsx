@@ -9,13 +9,13 @@ const openai = new openAi({
 
 
 interface AddManagerProps {
-    title: string;
-    description: string;
-    cta: string;
     generateValues: (title: string, description: string, cta: string) => void;
+    changeTitle: (title: string) => void;
+    changeDesc: (desc: string) => void;
+    changeCta: (cta: string) => void;
 }
 
-const AddManager: React.FC<AddManagerProps> = ({title, description, cta, generateValues}) => {
+const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, changeDesc, changeCta}) => {
   const [input1, setInput1] = useState<string>('');
   const [input2, setInput2] = useState<string>('');
   const [input3, setInput3] = useState<string>('');
@@ -135,15 +135,132 @@ const AddManager: React.FC<AddManagerProps> = ({title, description, cta, generat
       );
   };
 
-  // const handleRegenerateClick = () => {
-  //   // Handle logic for the "Regenerate" button
-  //   // You can implement the logic to regenerate content here
-  // };
+  const handleRegenerateClick = async (field: string) => {
+    let tempField;
+    switch(field){
+      case "title":
+        try {
+          // Check if the prompt is not empty before making the API request
+          if (input1.trim() !== '') {
+            // Construct the OpenAI request payload for text completion
+            const responseText = await openai.chat.completions.create({
+              model: "gpt-3.5-turbo",
+              messages: [
+                { role: 'system', content: 'You are a helpful assistant.' },
+                { role: 'user', content: `You will receive a word, i want either to keep it, or to modify it as it to be as an add title, for example if you receive ferrari, you either keep it ferrari or write FerrariHouse. This is the word: ${input1}` },
+              ],
+              temperature: 0.8,
+              max_tokens: 50,
+              top_p: 1,
+            });
+    
+            // Check if the necessary properties are present in the text response
+            if (
+              responseText &&
+              responseText.choices &&
+              responseText.choices[0] &&
+              responseText.choices[0].message &&
+              responseText.choices[0].message.content
+            ) {
+              tempField = responseText.choices[0].message.content.trim();
+              setInput2(tempField);
+            } else {
+              console.error('Error generating text title: Unexpected response structure');
+            }
+          }
+        }catch (error) {
+          // Cast the error to the Error type and access the message property
+          console.error('Error generating title:', (error as Error).message);
+        }
+      break;
 
-  // const handleApplyClick = () => {
-  //   // Handle logic for the "Apply" button
-  //   // You can implement the logic to apply content here
-  // };
+      case "description":
+        try {
+          // Check if the prompt is not empty before making the API request
+          if (input1.trim() !== '') {
+            // Construct the OpenAI request payload for text completion
+            const responseText = await openai.chat.completions.create({
+              model: "gpt-3.5-turbo",
+              messages: [
+                { role: 'system', content: 'You are a helpful assistant.' },
+                { role: 'user', content: `You will receive a word, i want you to crate a short like an add description within 10 words related to the word. This is the word: ${input1}` },
+              ],
+              temperature: 0.8,
+              max_tokens: 50,
+              top_p: 1,
+            });
+    
+            // Check if the necessary properties are present in the text response
+            if (
+              responseText &&
+              responseText.choices &&
+              responseText.choices[0] &&
+              responseText.choices[0].message &&
+              responseText.choices[0].message.content
+            ) {
+              tempField = responseText.choices[0].message.content.trim();
+              setInput3(tempField);
+            } else {
+              console.error('Error generating text description: Unexpected response structure');
+            }
+          }
+        }catch (error) {
+          // Cast the error to the Error type and access the message property
+          console.error('Error generating description:', (error as Error).message);
+        }
+      break;
+
+      case "cta":
+        try {
+          // Check if the prompt is not empty before making the API request
+          if (input1.trim() !== '') {
+            // Construct the OpenAI request payload for text completion
+            const responseText = await openai.chat.completions.create({
+              model: "gpt-3.5-turbo",
+              messages: [
+                { role: 'system', content: 'You are a helpful assistant.' },
+                { role: 'user', content: `You will receive a word, Generate a Call to Action within 3 words related to the theme. This is the word: ${input1}` },
+              ],
+              temperature: 0.8,
+              max_tokens: 50,
+              top_p: 1,
+            });
+    
+            // Check if the necessary properties are present in the text response
+            if (
+              responseText &&
+              responseText.choices &&
+              responseText.choices[0] &&
+              responseText.choices[0].message &&
+              responseText.choices[0].message.content
+            ) {
+              tempField = responseText.choices[0].message.content.trim();
+              setInput4(tempField);
+            } else {
+              console.error('Error generating text cta: Unexpected response structure');
+            }
+          }
+        }catch (error) {
+          // Cast the error to the Error type and access the message property
+          console.error('Error generating cta:', (error as Error).message);
+        }
+      break;
+    }
+  };
+
+  const handleApplyClick = (field: string) => {
+    switch(field){
+      case "title":
+        changeTitle(input2);
+      break;
+      case "description":
+        changeDesc(input3);
+      break;
+      case "cta":
+        changeCta(input4);
+      break;
+    }
+  };
 
   return (
     <div className="add-manager">
@@ -166,10 +283,10 @@ const AddManager: React.FC<AddManagerProps> = ({title, description, cta, generat
           onChange={(e) => setInput2(e.target.value)}
         />
         <div className='btns'>
-          <button className="button-20">
+          <button className="button-20" onClick={() => handleRegenerateClick("title")}>
             <span className="text">Regenerate</span>
           </button>
-          <button className="button-20">
+          <button className="button-20" onClick={() => handleApplyClick("title")}>
             <span className="text">Apply</span>
           </button>
         </div>
@@ -182,10 +299,10 @@ const AddManager: React.FC<AddManagerProps> = ({title, description, cta, generat
           onChange={(e) => setInput3(e.target.value)}
         />
         <div className='btns'>
-          <button className="button-20">
+          <button className="button-20" onClick={() => handleRegenerateClick("description")}>
             <span className="text">Regenerate</span>
           </button>
-          <button className="button-20">
+          <button className="button-20"  onClick={() => handleApplyClick("description")}>
             <span className="text">Apply</span>
           </button>
         </div>
@@ -198,10 +315,10 @@ const AddManager: React.FC<AddManagerProps> = ({title, description, cta, generat
           onChange={(e) => setInput4(e.target.value)}
         />
         <div className='btns'>
-          <button className="button-20">
+          <button className="button-20" onClick={() => handleRegenerateClick("cta")}>
             <span className="text">Regenerate</span>
           </button>
-          <button className="button-20">
+          <button className="button-20"  onClick={() => handleApplyClick("cta")}>
             <span className="text">Apply</span>
           </button>
         </div>
