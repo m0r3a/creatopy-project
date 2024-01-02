@@ -1,4 +1,3 @@
-// Banner.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -29,9 +28,11 @@ const BannerContainer = styled.div`
 
     h1 {
       font-size: 32px;
+        margin-top: 3%;
     }
 
     h2 {
+      margin-top: -1%;
       font-size: 24px;
     }
   }
