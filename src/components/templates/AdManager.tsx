@@ -1,12 +1,120 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import openAi from 'openai';
-import './Styles/AdManager.css';
 
 const openai = new openAi({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
+const StyledAdManager = styled.div`
+  background: transparent;
+  margin-right: 20px;
+  background-color: rgba(3, 95, 78, 0.31);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`;
+
+const StyledRow = styled.div`
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledHeader = styled.h4`
+  background-color: white;
+  color: black;
+  position: relative;
+  margin-top: 0;
+  height: 40px;
+  width: 98.5%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+`;
+
+const StyledInput = styled.input`
+  width: 500px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+
+  &:focus {
+    border-color: #00ff95;
+    box-shadow: 0 0 5px rgba(0, 157, 229, 0.5);
+  }
+
+  &:not(:placeholder-shown) {
+    background-color: #f8f8f8;
+  }
+`;
+
+const StyledButton = styled.button`
+  width: max-content;
+  height: 35px;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 5px;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit;
+  border-style: solid;
+  border-width: 0;
+  box-sizing: border-box;
+
+  border: 1px solid #2b2b2b;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  background-image: radial-gradient(75% 25% at 50% 95%, rgba(255, 255, 255, 0.2), transparent);
+  color: #000000;
+  box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.55, 1, 0.15, 1);
+  will-change: transform;
+  cursor: pointer;
+
+  &:focus {
+    outline-style: solid;
+    outline-color: transparent;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: #000000;
+      transform: scale(1.04);
+      background-color: #ffffff;
+    }
+  }
+
+  &:focus-visible {
+    border-color: #000000;
+    transform: scale(1.04);
+    background-color: #ffffff;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.0625em;
+    text-underline-offset: 0.125em;
+  }
+
+  &:active {
+    border-color: #000000;
+    transform: scale(0.96);
+    background-color: #ffffff;
+  }
+`;
 
 interface AddManagerProps {
     generateValues: (title: string, description: string, cta: string) => void;
@@ -240,67 +348,67 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
   };
 
   return (
-    <div className="add-manager">
-      <div className="row first">
-        <h4>Enter desired product name:</h4>
-        <input
+    <StyledAdManager>
+      <StyledRow>
+        <StyledHeader>Enter desired product name:</StyledHeader>
+        <StyledInput
           type="text"
           value={input1}
           onChange={(e) => setInput1(e.target.value)}
         />
-        <button className="button-20" onClick={handleGenerateClick}>
+        <StyledButton onClick={handleGenerateClick}>
           <span className="text">Generate</span>
-        </button>
-      </div>
-      <div className="row second">
-      <h4>Change the title</h4>
-        <input
+        </StyledButton>
+      </StyledRow>
+      <StyledRow>
+        <StyledHeader>Change the title</StyledHeader>
+        <StyledInput
           type="text"
           value={input2}
           onChange={(e) => setInput2(e.target.value)}
         />
-        <div className='btns'>
-          <button className="button-20" onClick={() => handleRegenerateClick("title")}>
+        <div>
+          <StyledButton onClick={() => handleRegenerateClick('title')}>
             <span className="text">Regenerate</span>
-          </button>
-          <button className="button-20" onClick={() => handleApplyClick("title")}>
+          </StyledButton>
+          <StyledButton onClick={() => handleApplyClick('title')}>
             <span className="text">Apply</span>
-          </button>
+          </StyledButton>
         </div>
-      </div>
-      <div className="row third">
-      <h4>Change the description</h4>
-        <input
+      </StyledRow>
+      <StyledRow>
+        <StyledHeader>Change the description</StyledHeader>
+        <StyledInput
           type="text"
           value={input3}
           onChange={(e) => setInput3(e.target.value)}
         />
-        <div className='btns'>
-          <button className="button-20" onClick={() => handleRegenerateClick("description")}>
+        <div>
+          <StyledButton onClick={() => handleRegenerateClick('description')}>
             <span className="text">Regenerate</span>
-          </button>
-          <button className="button-20"  onClick={() => handleApplyClick("description")}>
+          </StyledButton>
+          <StyledButton onClick={() => handleApplyClick('description')}>
             <span className="text">Apply</span>
-          </button>
+          </StyledButton>
         </div>
-      </div>
-      <div className="row fourth">
-      <h4>Change the CLA button</h4>
-        <input
+      </StyledRow>
+      <StyledRow>
+        <StyledHeader>Change the CLA button</StyledHeader>
+        <StyledInput
           type="text"
           value={input4}
           onChange={(e) => setInput4(e.target.value)}
         />
-        <div className='btns'>
-          <button className="button-20" onClick={() => handleRegenerateClick("cta")}>
+        <div>
+          <StyledButton onClick={() => handleRegenerateClick('cta')}>
             <span className="text">Regenerate</span>
-          </button>
-          <button className="button-20"  onClick={() => handleApplyClick("cta")}>
+          </StyledButton>
+          <StyledButton onClick={() => handleApplyClick('cta')}>
             <span className="text">Apply</span>
-          </button>
+          </StyledButton>
         </div>
-      </div>
-    </div>
+      </StyledRow>
+    </StyledAdManager>
   );
 };
 
