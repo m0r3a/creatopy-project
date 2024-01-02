@@ -15,7 +15,7 @@ interface AddManagerProps {
     changeCta: (cta: string) => void;
 }
 
-const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, changeDesc, changeCta}) => {
+const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, changeDesc, changeCta}) => {
   const [input1, setInput1] = useState<string>('');
   const [input2, setInput2] = useState<string>('');
   const [input3, setInput3] = useState<string>('');
@@ -304,4 +304,4 @@ const AddManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, cha
   );
 };
 
-export default AddManager;
+export default AdManager;

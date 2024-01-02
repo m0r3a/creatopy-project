@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import domtoimage from 'dom-to-image';
 import styled from 'styled-components';
-import AddManager from './AdManager';
+import AdManager from './AdManager';
 import openAi from 'openai';
 
 const openai = new openAi({
@@ -208,7 +208,7 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
           <span className="text">Download</span>
         </DownloadButton>
       </Element>
-      <AddManager
+      <AdManager
         generateValues={handleChangeGeneration}
         changeTitle={handleApplyTitle}
         changeDesc={handleApplyDesc}
