@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import domtoimage from 'dom-to-image';
 import styled from 'styled-components';
-import AddManager from './AddManager';
+import AddManager from './AdManager';
 import openAi from 'openai';
 
 const openai = new openAi({

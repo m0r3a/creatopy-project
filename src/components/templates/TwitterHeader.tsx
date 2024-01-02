@@ -1,7 +1,7 @@
 import React from 'react';
 import './Styles/EditMenu.css';
 import Header from './Header';
-import AddContainer from './AddContainer';
+import AddContainer from './AdContainer';
 
 const InstagramPost: React.FC = () => {
   

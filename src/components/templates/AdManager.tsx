@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import openAi from 'openai';
-import './Styles/AddManager.css';
+import './Styles/AdManager.css';
 
 const openai = new openAi({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
