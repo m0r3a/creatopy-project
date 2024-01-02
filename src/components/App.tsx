@@ -4,19 +4,7 @@ import Banners from './Banners';
 import InstagramPost from './templates/InstagramPost';
 import TwitterHeader from './templates/TwitterHeader';
 import InstagramStory from './templates/InstagramStory';
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    height: 100vh;
-    background: linear-gradient(90deg, #00FFC6, #30AADD);
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    color: white;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-`;
+import GlobalStyle from './styled-components-main/StyledComponents';
 
 const App: React.FC = () => {
   return (
