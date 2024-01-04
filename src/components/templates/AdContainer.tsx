@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import domtoimage from 'dom-to-image';
 import AdManager from './AdManager';
 import openAi from 'openai';
-import Container, {Element, ImageContainer, DownloadButton } from './styled-components-templates/StyledComponents';
+import Container, { Element, ImageContainer, DownloadButton, LoadingLogo } from './styled-components-templates/StyledComponents';
 
 const openai = new openAi({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -21,12 +21,14 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
   const [cta, setCta] = useState<string>('Call to Action button');
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string>(
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiqo_V7sqPhLLvsU4Q-z1E52dYR6clW06TsrrkjE6wGeVn_oSeff0yK4nEOcBQGLFmbSk&usqp=CAU'
-  );
+  )
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleChangeGeneration = async (title: string, description: string, cta: string) => {
     setTitle(title);
     setDescription(description);
     setCta(cta);
+    setIsLoading(true);
 
     try {
       const response = await openai.images.generate({
@@ -39,14 +41,14 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
       const imageUrl = response.data[0]?.url;
 
       if (imageUrl) {
-        console.log(imageUrl);
-        console.log(process.env.REACT_APP_OPENAI_API_KEY);
         setGeneratedImageUrl(imageUrl);
       } else {
         console.error('Error generating image: Unexpected response structure');
       }
     } catch (error) {
       console.error('Error generating image:', (error as Error).message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -96,19 +98,25 @@ const AddContainer: React.FC<AddContainerProps> = ({ heightProp, widthProp }) =>
   return (
     <Container>
       <Element>
-        <ImageContainer
-          height={heightProp}
-          width={widthProp}
-          imageUrl={generatedImageUrl}
-          ref={imageContainerRef}
-        >
-          <h2>{title}</h2>
-          <p>{description}</p>
-          <button onClick={handleOpenImageInNewTab}>{cta}</button>
-        </ImageContainer>
+        {isLoading ? (
+          <LoadingLogo />
+        ) : (
+          <ImageContainer
+            height={heightProp}
+            width={widthProp}
+            imageUrl={generatedImageUrl}
+            ref={imageContainerRef}
+          >
+            <h2>{title}</h2>
+            <p>{description}</p>
+            <button onClick={handleOpenImageInNewTab}>{cta}</button>
+          </ImageContainer>
+        )}
+        {!isLoading && (
         <DownloadButton onClick={handleDownloadClick} role="button">
           <span className="text">Download</span>
         </DownloadButton>
+        )}
       </Element>
       <AdManager
         generateValues={handleChangeGeneration}

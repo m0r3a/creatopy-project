@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
   display: grid;
@@ -226,5 +226,24 @@ const NameSize = styled.div`
   font-size: 16px;
 `;
 
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const LoadingLogo = styled.div`
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: ${rotate360} 1s linear infinite;
+  margin: 0 auto;
+`;
+
 export default Container;
-export {Element, ImageContainer, DownloadButton, StyledButton, StyledInput, StyledHeader, StyledRow, StyledAdManager, HeaderComponent, NameSize};
+export {Element, ImageContainer, DownloadButton, StyledButton, StyledInput, StyledHeader, StyledRow, StyledAdManager, HeaderComponent, NameSize, LoadingLogo};
