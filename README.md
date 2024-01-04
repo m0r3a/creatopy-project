@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 In order to run the webapp add a .env file with the OpenAI api key as following: REACT_APP_OPENAI_API_KEY="api-key"
 
 ## Available Scripts
