@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import openAi from 'openai';
-import { StyledAdManager, StyledRow, StyledHeader, StyledInput, StyledButton } from './styled-components-templates/StyledComponents';
+import { StyledAdManager, StyledRow, StyledHeader, StyledInput, StyledButton, LoadingLogoSmall } from './styled-components-templates/StyledComponents';
 
 const openai = new openAi({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -20,12 +20,19 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
   const [input2, setInput2] = useState<string>('');
   const [input3, setInput3] = useState<string>('');
   const [input4, setInput4] = useState<string>('');
+  const [isLoadingInput1, setIsLoadingInput1] = useState<boolean>(false);
+  const [isLoadingInput2, setIsLoadingInput2] = useState<boolean>(false);
+  const [isLoadingInput3, setIsLoadingInput3] = useState<boolean>(false);
+  const [isLoadingInput4, setIsLoadingInput4] = useState<boolean>(false);
+
 
   const handleGenerateClick = async () => {
     let generatedTitle;
     let generatedDescription;
     let generatedCta;
 
+    setIsLoadingInput1(true);
+    setIsLoadingInput2(true);
     try {
       if (input1.trim() !== '') {
         const responseText = await openai.chat.completions.create({
@@ -55,7 +62,9 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
     }catch (error) {
       console.error('Error generating title:', (error as Error).message);
     }
+    setIsLoadingInput2(false);
 
+    setIsLoadingInput3(true);
     try {
       if (input1.trim() !== '') {
         const responseText = await openai.chat.completions.create({
@@ -86,7 +95,9 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
     }catch (error) {
       console.error('Error generating description:', (error as Error).message);
     }
+    setIsLoadingInput3(false);
 
+    setIsLoadingInput4(true);
     try {
       if (input1.trim() !== '') {
         const responseText = await openai.chat.completions.create({
@@ -116,6 +127,8 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
     }catch (error) {
       console.error('Error generating cta:', (error as Error).message);
     }
+    setIsLoadingInput4(false);
+    setIsLoadingInput1(false);
 
     generateValues(
       generatedTitle !== undefined ? generatedTitle : "Default Value",
@@ -126,8 +139,10 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
 
   const handleRegenerateClick = async (field: string) => {
     let tempField;
+    
     switch(field){
       case "title":
+        setIsLoadingInput2(true);
         try {
           if (input1.trim() !== '') {
             const responseText = await openai.chat.completions.create({
@@ -157,9 +172,11 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
         }catch (error) {
           console.error('Error generating title:', (error as Error).message);
         }
+        setIsLoadingInput2(false);
       break;
 
       case "description":
+        setIsLoadingInput3(true);
         try {
           if (input1.trim() !== '') {
             const responseText = await openai.chat.completions.create({
@@ -189,9 +206,11 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
         }catch (error) {
           console.error('Error generating description:', (error as Error).message);
         }
+        setIsLoadingInput3(false);
       break;
 
       case "cta":
+        setIsLoadingInput4(true);
         try {
           if (input1.trim() !== '') {
             const responseText = await openai.chat.completions.create({
@@ -221,6 +240,7 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
         }catch (error) {
           console.error('Error generating cta:', (error as Error).message);
         }
+        setIsLoadingInput4(false);
       break;
     }
   };
@@ -248,9 +268,13 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           value={input1}
           onChange={(e) => setInput1(e.target.value)}
         />
+        {isLoadingInput1 ? (
+        <LoadingLogoSmall />
+        ) : (
         <StyledButton onClick={handleGenerateClick}>
           <span className="text">Generate</span>
         </StyledButton>
+        )}
       </StyledRow>
       <StyledRow>
         <StyledHeader>Change the title</StyledHeader>
@@ -259,6 +283,9 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           value={input2}
           onChange={(e) => setInput2(e.target.value)}
         />
+        {isLoadingInput2 ? (
+        <LoadingLogoSmall />
+        ) : (
         <div>
           <StyledButton onClick={() => handleRegenerateClick('title')}>
             <span className="text">Regenerate</span>
@@ -267,6 +294,7 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
             <span className="text">Apply</span>
           </StyledButton>
         </div>
+        )}
       </StyledRow>
       <StyledRow>
         <StyledHeader>Change the description</StyledHeader>
@@ -275,6 +303,9 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           value={input3}
           onChange={(e) => setInput3(e.target.value)}
         />
+        {isLoadingInput3 ? (
+        <LoadingLogoSmall />
+        ) : (
         <div>
           <StyledButton onClick={() => handleRegenerateClick('description')}>
             <span className="text">Regenerate</span>
@@ -283,6 +314,7 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
             <span className="text">Apply</span>
           </StyledButton>
         </div>
+        )}
       </StyledRow>
       <StyledRow>
         <StyledHeader>Change the CLA button</StyledHeader>
@@ -291,6 +323,9 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           value={input4}
           onChange={(e) => setInput4(e.target.value)}
         />
+        {isLoadingInput4 ? (
+        <LoadingLogoSmall />
+        ) : (
         <div>
           <StyledButton onClick={() => handleRegenerateClick('cta')}>
             <span className="text">Regenerate</span>
@@ -299,6 +334,7 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
             <span className="text">Apply</span>
           </StyledButton>
         </div>
+        )}
       </StyledRow>
     </StyledAdManager>
   );

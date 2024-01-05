@@ -158,6 +158,7 @@ const StyledButton = styled.button`
   background: transparent;
   padding: 0;
   margin: 5px;
+  margin-top: 13px;
   border-radius: 0;
   text-align: inherit;
   text-transform: inherit;
@@ -245,5 +246,17 @@ const LoadingLogo = styled.div`
   margin: 0 auto;
 `;
 
+const LoadingLogoSmall = styled.div`
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: ${rotate360} 1s linear infinite;
+  margin: 0 auto;
+
+  margin-top: 14px;
+`;
+
 export default Container;
-export {Element, ImageContainer, DownloadButton, StyledButton, StyledInput, StyledHeader, StyledRow, StyledAdManager, HeaderComponent, NameSize, LoadingLogo};
+export {Element, ImageContainer, DownloadButton, StyledButton, StyledInput, StyledHeader, StyledRow, StyledAdManager, HeaderComponent, NameSize, LoadingLogo, LoadingLogoSmall};
