@@ -5,7 +5,7 @@ import AddContainer from './AdContainer';
 const InstagramPost: React.FC = () => {
   
   return (
-    <div className="">
+    <div>
       <Header name="Instagram Story (1080x1920)"/>
       <AddContainer heightProp={"480px"} widthProp={"270px"}/>
     </div>
