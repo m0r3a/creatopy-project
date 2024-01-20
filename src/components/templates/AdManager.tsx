@@ -8,7 +8,7 @@ const openai = new openAi({
 });
 
 
-interface AddManagerProps {
+type AddManagerProps = {
     generateValues: (title: string, description: string, cta: string) => void;
     changeTitle: (title: string) => void;
     changeDesc: (desc: string) => void;
@@ -53,7 +53,7 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           responseText.choices[0].message &&
           responseText.choices[0].message.content
         ) {
-          generatedTitle = responseText.choices[0].message.content.trim();
+          generatedTitle = responseText?.choices[0]?.message?.content?.trim();
           setInput2(generatedTitle);
         } else {
           console.error('Error generating text title: Unexpected response structure');

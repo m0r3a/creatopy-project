@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from './Header';
-import AddContainer from './AdContainer';
+import AdContainer from './AdContainer';
 
 const InstagramPost: React.FC = () => {
-  
   return (
-    <div>
-      <Header name="Instagram Post (500x500px)"/>
-      <AddContainer heightProp={"500px"} widthProp={"500px"}/>
-    </div>
+    <>
+      <Header name="Instagram Post (500x500px)" />
+      <AdContainer heightProp="500px" widthProp="500px" />
+    </>
   );
 };
 

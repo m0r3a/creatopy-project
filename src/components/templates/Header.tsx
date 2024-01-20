@@ -1,11 +1,11 @@
 import React from 'react';
 import { HeaderComponent, NameSize } from './styled-components-templates/StyledComponents';
 
-interface HeaderProps {
+type TheaderProps = {
   name: string;
-}
+};
 
-const Header: React.FC<HeaderProps> = ({ name }) => {
+const Header: React.FC<TheaderProps> = ({ name }) => {
   return (
     <HeaderComponent>
       AI Ad Generator
