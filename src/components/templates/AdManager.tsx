@@ -46,18 +46,10 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           top_p: 1,
         });
 
-        if (
-          responseText &&
-          responseText.choices &&
-          responseText.choices[0] &&
-          responseText.choices[0].message &&
-          responseText.choices[0].message.content
-        ) {
-          generatedTitle = responseText?.choices[0]?.message?.content?.trim();
-          setInput2(generatedTitle);
-        } else {
-          console.error('Error generating text title: Unexpected response structure');
-        }
+        
+      generatedTitle = responseText?.choices[0]?.message?.content?.trim();
+      generatedTitle !== undefined ? setInput2(generatedTitle) : console.log("error");
+        
       }
     }catch (error) {
       console.error('Error generating title:', (error as Error).message);
@@ -128,8 +120,8 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
       console.error('Error generating cta:', (error as Error).message);
     }
     setIsLoadingInput4(false);
-    setIsLoadingInput1(false);
-
+    setIsLoadingInput1(false); 
+    
     generateValues(
       generatedTitle !== undefined ? generatedTitle : "Default Value",
       generatedDescription !== undefined ? generatedDescription : "Default Value",
