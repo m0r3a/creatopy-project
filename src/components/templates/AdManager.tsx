@@ -45,8 +45,7 @@ const AdManager: React.FC<AddManagerProps> = ({generateValues, changeTitle, chan
           max_tokens: 50,
           top_p: 1,
         });
-
-        
+2
       generatedTitle = responseText?.choices[0]?.message?.content?.trim();
       generatedTitle !== undefined ? setInput2(generatedTitle) : console.log("error");
         
