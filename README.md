@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 In order to run the webapp add a .env file with the OpenAI api key as following: REACT_APP_OPENAI_API_KEY="api-key"\
-WebApp is deployed on Netlify: https://luminous-elf-332e66.netlify.app/
+WebApp is deployed on Netlify: https://ad-generator-app.netlify.app/
 
 ## Available Scripts
 
